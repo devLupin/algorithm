@@ -12,7 +12,9 @@ int map[50][50];
 const int dy[] = { -1,1,0,0,-1,1,-1,1 };
 const int dx[] = { 0,0,-1,1,-1,-1,1,1 };
 
-void bfs() {
+int bfs() {
+	int ans = 0;
+
 	while (!q.empty()) {
 		int sz = q.size();
 		while (sz--) {
@@ -33,9 +35,12 @@ void bfs() {
 					int comp = map[cur.first][cur.second] + 1;
 					map[ny][nx] = (map[ny][nx] < comp) ? map[ny][nx] : comp;
 				}
+				ans = (ans > map[ny][nx]) ? ans : map[ny][nx];
 			}
 		}
 	}
+
+	return ans;
 }
 
 int main(void) {
@@ -50,12 +55,6 @@ int main(void) {
 				q.push({ i, j });
 		}
 
-	bfs();
-
-	int ans = 0;
-	for (int i = 0; i < n; i++)
-		for (int j = 0; j < m; j++)
-			ans = (ans > map[i][j]) ? ans : map[i][j];
-
-	cout << ans - 1;
+	cout << bfs() - 1;
+	return 0;
 }
