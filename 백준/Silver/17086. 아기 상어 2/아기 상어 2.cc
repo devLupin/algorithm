@@ -12,8 +12,6 @@ int map[50][50];
 const int dy[] = { -1,1,0,0,-1,1,-1,1 };
 const int dx[] = { 0,0,-1,1,-1,-1,1,1 };
 
-bool visited[50][50] = { false, };
-
 void bfs() {
 	while (!q.empty()) {
 		int sz = q.size();
