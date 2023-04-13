@@ -4,25 +4,25 @@
 
 using namespace std;
 
-int arr[1000001];
+bool arr[1000001];
 
 int solution(int n) {
-    int answer = 0;
+    fill_n(arr, 1000001, false);
     
     for(int i=2; i<=n; i++)
-        arr[i] = i;
+        arr[i] = true;
     
-    for(int i=2; i<=sqrt(n); i++){
-        if(arr[i] == 0) continue;
+    for(int i=2; i<=sqrt(n); i++) {
+        if(!arr[i]) continue;
         
-        for(int j=i*i; j<=n; j += i){
-            arr[j] = 0;
+        for(int j=i*i; j<=n; j += i) {
+            arr[j] = false;
         }
     }
     
+    int ans = 0;
     for(int i=2; i<=n; i++)
-        if(arr[i] != 0)
-            answer++;
+        if(arr[i]) ans++;
     
-    return answer;
+    return ans;
 }
