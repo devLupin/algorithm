@@ -7,10 +7,7 @@ using namespace std;
 bool arr[1000001];
 
 int solution(int n) {
-    fill_n(arr, 1000001, false);
-    
-    for(int i=2; i<=n; i++)
-        arr[i] = true;
+    fill_n(arr, 1000001, true);
     
     for(int i=2; i<=sqrt(n); i++) {
         if(!arr[i]) continue;
