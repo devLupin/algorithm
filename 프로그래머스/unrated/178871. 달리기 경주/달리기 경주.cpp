@@ -26,7 +26,7 @@ vector<string> solution(vector<string> players, vector<string> callings) {
     
     vector<string> ans;
     
-    for(auto c : m1)
-        ans.push_back(c.second);
+    for(map<int, string>::iterator it = m1.begin(); it != m1.end(); it++)
+        ans.push_back(it->second);
     return ans;
 }
