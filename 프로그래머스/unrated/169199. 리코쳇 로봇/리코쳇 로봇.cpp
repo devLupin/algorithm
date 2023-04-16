@@ -32,6 +32,7 @@ int solution(vector<string> board) {
 
     queue<pos> q;
     q.push({ src.first, src.second, 0 });
+    visited[src.first][src.second] = true;
 
     while (!q.empty()) {
         pos cur = q.front();
