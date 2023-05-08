@@ -25,11 +25,6 @@ int main(void)
 		string in;
 		cin >> in;
 
-		if (in.size() % 2 == 0) {
-			cout << "NO\n";
-			continue;
-		}
-
 		bool ans = search(in, 0, in.size() - 1);
 		cout << ((ans) ? "YES\n" : "NO\n");
 	}
