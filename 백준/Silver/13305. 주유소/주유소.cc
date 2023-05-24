@@ -17,15 +17,22 @@ int main(void)
 	for (int i = 0; i < N; i++)
 		cin >> node[i];
 
-	long long ans = node[0] * w[0];
-	int i = 1;
-	while (i < N-1) {
-		if (node[i] < node[i + 1])
-			ans += (node[i] * (w[i] + w[i + 1]));
-		else
-			ans += (node[i] * w[i] + node[i + 1] * w[i + 1]);
-		i += 2;
+	long long ans = 0;
+	long long x = node[0];
+	long long op = 0;
+	for (int i = 1; i < N; i++) {
+		if (node[i] > x) {
+			op += w[i - 1];
+			continue;
+		}
+		else {
+			ans += (x * (op + w[i - 1]));
+			x = node[i];
+			op = 0;
+		}
 	}
+	ans += x * op;
 	cout << ans;
+
 	return 0;
 }
