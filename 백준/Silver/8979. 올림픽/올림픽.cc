@@ -1,6 +1,17 @@
 #include<bits/stdc++.h>
 using namespace std;
-using pii = pair<int, int>;
+
+typedef struct {
+	int gold, silver, bronze, num;
+}Medal;
+
+bool compare(const Medal& a, const Medal& b) {
+	if (a.gold == b.gold) {
+		if (a.silver == b.silver) return a.bronze > b.bronze;
+		return a.silver > b.silver;
+	}
+	return a.gold > b.gold;
+}
 
 int main(void)
 {
@@ -10,32 +21,33 @@ int main(void)
 	int n, k;
 	cin >> n >> k;
 
-	vector<pii> v(n);
-	vector<int> rank(n + 1);
+	vector<Medal> v(n);
 
 	for (int i = 0; i < n; i++) {
 		int c, g, s, b;
 		cin >> c >> g >> s >> b;
 
-		v[c - 1] = { ~(g * 3 + s * 2 + b), c };
+		v[c - 1] = { g,s,b,c };
 	}
 
-	sort(v.begin(), v.end());
+	sort(v.begin(), v.end(), compare);
 
-	int cmp = v[0].first;
-	int r = 1, cnt = 0;
-	for (pii x : v) {
-		if (cmp == x.first) {
-			rank[x.second] = r;
-			cnt++;
+	Medal target;
+
+	for(int i=0; i<n; i++)
+		if (v[i].num == k) {
+			target = v[i];
+			break;
 		}
-		else {
-			r += cnt;
-			rank[x.second] = r;
-			cmp = x.first;
+
+	int rank;
+	for (int i = 0; i < n; i++) {
+		if (v[i].gold == target.gold && v[i].silver == target.silver && v[i].bronze == target.bronze) {
+			rank = i+1;
+			break;
 		}
 	}
 
-	cout << rank[k];
+	cout << rank;
 	return 0;
 }
