@@ -18,14 +18,7 @@ void bfs()
     visited[1][1] = true;
     on[1][1] = true;
     cnt++;
-    for (auto room : avail[1][1])
-    {
-        if (!on[room.X][room.Y])
-        {
-            on[room.X][room.Y] = true;
-            cnt++;
-        }
-    }
+    
     while (!Q.empty())
     {
         auto cur = Q.front();
