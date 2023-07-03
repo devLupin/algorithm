@@ -19,13 +19,17 @@ int main(void)
 		v.push_back({sm * 100 + sd, em * 100 + ed});
 	}
 
-	int t = S;
+	sort(v.begin(), v.end());
+
+	int t = S, idx = 0;
 	while(t < E) {
 		int next = t;
 
-		for(int i=0; i<n; i++)
-			if(v[i].first <= t && v[i].second > next)
+		for(int i=idx; i<n; i++)
+			if(v[i].first <= t && v[i].second > next) {
 				next = v[i].second;
+				idx = i;
+			}
 		
 		if(t == next) {
 			cout << 0;
