@@ -9,13 +9,14 @@ int main(void)
     int n, div=2;
     cin >> n;
 	
-    while(div <= n) {
+    while(div*div <= n) {
         if(n % div == 0) {
             n /= div;
             cout << div << '\n';
         }
         else div++;
     }
+    if (n != 1) cout << n;
 
 	return 0;
 }
