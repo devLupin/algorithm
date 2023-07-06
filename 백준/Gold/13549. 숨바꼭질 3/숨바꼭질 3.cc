@@ -1,45 +1,48 @@
-#include <iostream>
-#include <deque>
+#include <bits/stdc++.h>
 using namespace std;
- 
-#define SZ 100000+1
- 
-int N, K;
-int visited[SZ];
- 
-int bfs() {
-    deque<int> dq;
-    dq.push_front(N);
-    visited[N] = 1;
+using pii = pair<int,int>;
 
-    while (!dq.empty()) {
-        int x = dq.front();
-        dq.pop_front();
+int n, k;
+const int SZ = 100000+1;
+bool vis[SZ];
 
-        if (x == K) return visited[K] - 1;
+int main(void)
+{
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
 
-        int nx = x * 2;
-        if (nx < SZ && !visited[nx]) {
-            dq.push_front(nx);
-            visited[nx] = visited[x];
-        }
+	cin >> n >> k;
 
-        nx = x + 1;
-        if (nx < SZ && !visited[nx]) {
-            dq.push_back(nx);
-            visited[nx] = visited[x] + 1;
-        }
+	deque<pii> dq;
+	dq.push_back({n, 0});
+	vis[n] = true;
 
-        nx = x - 1;
-        if (nx >= 0 && !visited[nx]) {
-            dq.push_back(nx);
-            visited[nx] = visited[x] + 1;
-        }
-    }
-}
- 
-int main() {
-    cin >> N >> K;
-    cout << bfs();
-    return 0;
+	while(!dq.empty()) {
+		int x = dq.front().first;
+		int w = dq.front().second;
+		dq.pop_front();
+
+		if(x == k) {
+			cout << w;
+			return 0;
+		}
+
+		int nx = x * 2;
+		if(nx < SZ && !vis[nx]) {
+			dq.push_front({nx, w});
+			vis[nx] = true;
+		}
+
+		nx = x - 1;
+		if(nx >= 0 && !vis[nx]) {
+			dq.push_back({nx, w+1});
+			vis[nx] = true;
+		}
+
+		nx = x + 1;
+		if(nx < SZ && !vis[nx]) {
+			dq.push_back({nx, w+1});
+			vis[nx] = true;
+		}
+	}
 }
