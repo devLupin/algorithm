@@ -4,26 +4,6 @@ using namespace std;
 string s;
 char board[3][3];
 
-vector<int> get_winner() {
-	vector<int> ret = {0,0};
-
-	for(int i=0; i<3; i++) {
-		if(board[i][0] == '.') continue;
-
-		if(board[i][0] == board[i][1] && board[i][0] == board[i][2])
-			board[i][0] == 'X' ? ret[0]++ : ret[1]++;
-		if(board[0][i] == board[1][i] && board[0][i] == board[2][i])
-			board[i][0] == 'X' ? ret[0]++ : ret[1]++;
-	}
-
-	if(board[0][0] != '.' && board[0][0] == board[1][1] && board[0][0] == board[2][2])
-		board[0][0] == 'X' ? ret[0]++ : ret[1]++;
-	if(board[0][2] != '.' && board[0][2] == board[1][1] && board[0][2] == board[2][0])
-		board[0][0] == 'X' ? ret[0]++ : ret[1]++;
-
-	return ret;
-}
-
 bool check(char c) {
 	bool ret = false;
 	for(int i=0; i<3; i++) {
