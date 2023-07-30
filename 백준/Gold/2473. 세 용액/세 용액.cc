@@ -2,7 +2,7 @@
 using namespace std;
 using ll = long long;
 
-const ll INF = 1000000005;
+const int INF = 1000000005;
 ll n, arr[5005];
 vector<ll> ans;
 
