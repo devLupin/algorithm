@@ -49,8 +49,6 @@ int main() {
     for (int i = 1; i <= n; i++) {
         if (pres[i].empty()) continue;
 
-        sort(pres[i].begin(), pres[i].end());
-
         cout << i << ' ' << pres[i].size() << '\n';
         for (int x : pres[i]) cout << x << ' ';
 
