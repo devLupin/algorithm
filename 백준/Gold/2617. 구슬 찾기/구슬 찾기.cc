@@ -5,7 +5,7 @@ int n, m, p, c, ans;
 vector<int> adj_h[100];
 vector<int> adj_l[100];
 
-bool solve(int start, vector<int> (&adj)[]) {
+bool solve(int start, vector<int> adj[]) {
     vector<bool> vis(n+1, false);
     
     queue<int> q;
