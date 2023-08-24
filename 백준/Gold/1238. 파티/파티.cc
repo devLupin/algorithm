@@ -20,6 +20,8 @@ int solve(int src, int dst) {
 		tie(w, u) = pq.top();
 		pq.pop();
 
+		if(D[u] != w) continue;
+
 		for(auto nxt : adj[u]) {
 			tie(dw, v) = nxt;
 
