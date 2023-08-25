@@ -5,14 +5,14 @@ using pli = pair<ll, int>;
 
 const ll INF = 0x7f7f7f7f7f7f7f;
 int N, M, A, B;
+ll C, Cost[100'002], C_route[100'002];
+
 
 vector<pli> adj[100'002];
 
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
-
-	ll C, Cost[100'002], C_route[100'002];
 
 	cin >> N >> M >> A >> B >> C;
 	fill(Cost+1, Cost+N+1, INF);
@@ -35,6 +35,7 @@ int main() {
 		pq.pop();
 
 		if(Cost[u] != w) continue;
+
 		if(w > C) {
 			Cost[u] = INF;
 			continue;
@@ -43,10 +44,9 @@ int main() {
 		for(auto nxt : adj[u]) {
 			tie(dw, v) = nxt;
 
-			if(dw + w > C) {
-				Cost[v] = INF;
+			if(dw + w > C)
 				continue;
-			}
+
 			if(dw + w < Cost[v]) {
 				Cost[v] = dw + w;
 				pq.push({dw + w, v});
