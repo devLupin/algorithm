@@ -19,10 +19,8 @@ int kmp(vector<int> &t, vector<int> &p) {
     vector<int> Pi = failure(p);
     for(int i=0, j=0; i<t.size(); i++) {
         while(j>0 && t[i] != p[j]) j = Pi[j-1];
-        if(t[i] == p[j]) {
-			if(j == p.size()-1) return true;
-			else j++;
-		}
+		if(j == p.size()-1) return 1;
+        if(t[i] == p[j]) j++;
     }
     return 0;
 }
