@@ -10,29 +10,29 @@ int main(void) {
 
     while(TC--) {
         vector<int> ans;
-        priority_queue<int> up;
-        priority_queue<int, vector<int>, greater<int>> down;
+        priority_queue<int> maxq;
+        priority_queue<int, vector<int>, greater<int>> minq;
         int n;
 
         cin >> n;
         for(int a, i=1; i<=n; i++) {
             cin >> a;
 
-            if(i % 2 == 0) down.push(a);
+            if(i % 2 == 0) minq.push(a);
             else {
-                up.push(a);
+                maxq.push(a);
 
-                if(!down.empty() && !up.empty()) {
-                    if(down.top() < up.top()) {
-                        down.push(up.top());
-                        up.pop();
-                        up.push(down.top());
-                        down.pop();
+                if(!minq.empty() && !maxq.empty()) {
+                    if(minq.top() < maxq.top()) {
+                        minq.push(maxq.top());
+                        maxq.pop();
+                        maxq.push(minq.top());
+                        minq.pop();
                     }
                 }
             }
 
-            if(i % 2 != 0) ans.push_back(up.top());
+            if(i % 2 != 0) ans.push_back(maxq.top());
         }
 
         cout << ans.size() << '\n';
