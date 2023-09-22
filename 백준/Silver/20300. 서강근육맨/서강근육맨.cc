@@ -15,20 +15,12 @@ int main() {
 		cin >> v[i];
 
 	sort(v.begin(), v.end());
+	if(v.size() > 1 && v.size() % 2 != 0) v.pop_back();
 
-	if(v.size() % 2 == 0) {
-		int i=0, j=v.size()-1;
-		while(i < j) {
-			m = max(v[i] + v[j], m);
-			i++, j--;
-		}
-	}
-	else {
-		int i=0, j=v.size()-2;
-		while(i < j) {
-			m = max(v[i] + v[j], m);
-			i++, j--;
-		}
+	int i=0, j=v.size()-1;
+	while(i < j) {
+		m = max(v[i] + v[j], m);
+		i++, j--;
 	}
 
 	cout << m;
