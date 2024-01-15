@@ -1,15 +1,17 @@
 # [BOJ](https://www.acmicpc.net/)
 
-- ## [Now](https://solved.ac/profile/lupin_dev)
-  - 부족함을 느끼고 처음부터 다시 푸는 중!
-
 ![Solved.ac프로필](https://mazassumnida.wtf/api/generate_badge?boj=lupin_dev)
-
-- ## [Past](https://solved.ac/profile/luckyquit)
 
 <br/><br/>
 # [Programmers](https://school.programmers.co.kr/learn/challenges)
 
-- 150++ (2023-11-06 기준)
+- 200++ (2024-01 기준)
 
-![image](https://github.com/devLupin/algorithm/assets/33558083/c47e606d-2717-49ae-a38c-8e377344d34b)
+![image](https://github.com/devLupin/algorithm/assets/33558083/95553a30-1e6f-4f0c-9349-b30452c43d14)
+
+<br/><br/>
+# [Codetree](https://www.codetree.ai/)
+
+- 상위 23.85% (2024-01 기준)
+
+[![코드트리|실력진단-lupin](https://banner.codetree.ai/v1/banner/lupin)](https://www.codetree.ai/profiles/lupin)
