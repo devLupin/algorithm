@@ -1,9 +1,9 @@
 # [BOJ](https://www.acmicpc.net/)
 
 - 380++ (2023-12)
-- top 5.29%
+- top 5%
 
-![Solved.ac프로필](https://mazassumnida.wtf/api/generate_badge?boj=lupin_dev)
+[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=lupin_dev)](https://solved.ac/profile/lupin_dev)
 
 <br/><br/>
 # [Programmers](https://school.programmers.co.kr/learn/challenges)
@@ -15,6 +15,6 @@
 <br/><br/>
 # [Codetree](https://www.codetree.ai/)
 
-- top 23.85%
+- top 9%
 
 [![코드트리|실력진단-lupin](https://banner.codetree.ai/v1/banner/lupin)](https://www.codetree.ai/profiles/lupin)
