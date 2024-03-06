@@ -2,17 +2,17 @@
 using namespace std;
 
 int N, A[1'000'000];
-vector<int> tmp, uni;
+vector<int> uni;
 
-int binary_search(int x) {
-    int st = 0, en = uni.size() - 1;
-    while (st <= en) {
+int lower_bound(int x) {
+    int st = 0, en = uni.size();
+    while (st < en) {
         int mid = (st + en) / 2;
 
-        if (uni[mid] == x) return mid;
-        else if (uni[mid] < x) st = mid + 1;
-        else en = mid - 1;
+        if (uni[mid] >= x) en = mid;
+        else st = mid + 1;
     }
+    return st;
 }
 
 int main(void)
@@ -23,15 +23,13 @@ int main(void)
     cin >> N;
     for (int i = 0; i < N; i++) {
         cin >> A[i];
-        tmp.push_back(A[i]);
+        uni.push_back(A[i]);
     }
-    sort(tmp.begin(), tmp.end());
-    
-    for (int i = 0; i < N; i++)
-        if (i == 0 || tmp[i] != tmp[i - 1]) uni.push_back(tmp[i]);
+    sort(uni.begin(), uni.end());
+    uni.erase(unique(uni.begin(), uni.end()), uni.end());
 
     for (int i = 0; i < N; i++)
-        cout << binary_search(A[i]) << ' ';
+        cout << lower_bound(A[i]) << ' ';
 
     return 0;
 }
