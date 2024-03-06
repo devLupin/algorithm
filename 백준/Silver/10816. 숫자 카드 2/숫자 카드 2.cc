@@ -1,48 +1,50 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> a;
-int N, M;
+int N, M, A[500'005];
 
-int lower_bound(int target) {
-    int s = 0, e = a.size() - 1;
-    while (s < e) {
-        int m = (s + e) / 2;
-        if (a[m] >= target) e = m;
-        else s = m + 1;
-    }
-    return e;
-}
-int upper_bound(int target) {
-    int s = 0, e = a.size() - 1;
-    while (s < e) {
-        int m = (s + e) / 2;
-        if (a[m] > target) e = m;
-        else s = m + 1;
-    }
-    return e;
-}
-
-int main(void) 
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    cin >> N; a.assign(N, 0);
-    for (int i = 0; i < N; i++)
-        cin >> a[i];
+// 가장 처음 x보다 작은 수를 만나는 순간 + 1
+int lower(int x) {
+    int mid, st = 0, en = N;
     
-    sort(a.begin(), a.end());
+    while (st < en) {
+        mid = (st + en) / 2;
+
+        if (A[mid] >= x) en = mid;
+        else st = mid + 1;
+    }
+
+    return st;
+}
+
+// 가장 처음 x보다 큰 수를 만나는 순간
+int upper(int x) {
+    int mid, st = 0, en = N;
+
+    while (st < en) {
+        mid = (st + en) / 2;
+        
+        if (A[mid] > x) en = mid;
+        else st = mid + 1;
+    }
+
+    return st;
+}
+
+int main(void)
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
+    cin >> N;
+    for (int i = 0; i < N; i++) cin >> A[i];
+    sort(A, A + N);
 
     cin >> M;
-    for (int tmp, i = 0; i < M; i++) {
-        cin >> tmp;
-        int lower = lower_bound(tmp);
-        int upper = upper_bound(tmp);
-        int ans = upper - lower;
-        if (upper == N - 1 && a[N - 1] == tmp) ans++;
-
-        cout << ans << ' ';
+    for (int x, i = 0; i < M; i++) {
+        cin >> x;
+        cout << upper(x) - lower(x) << ' ';
     }
+
     return 0;
 }
