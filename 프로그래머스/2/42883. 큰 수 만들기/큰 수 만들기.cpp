@@ -2,24 +2,22 @@
 using namespace std;
 
 string solution(string number, int k) {
-    string ans = "";
-    int len = number.size() - k;
-    int idx = 0;
-    
-    for(int i=0; i<len; i++) {
-        char num = number[idx];
-        int c_idx = idx;
-        
-        for(int j=idx; j<=k+i; j++) {
-            if(num < number[j]) {
-                num = number[j];
-                c_idx = j;
-            }
+    list<char> st;
+
+    for (char num : number) {
+        while (k > 0 && !st.empty() && st.back() < num) {
+            st.pop_back();
+            k--;
         }
-        
-        idx = c_idx + 1;
-        ans += num;
+        st.push_back(num);
     }
+
+    while (k--) st.pop_back();
+
+    string answer = "";
     
-    return ans;
+    for (auto it = st.begin(); it != st.end(); it++)
+        answer += *it;
+
+    return answer;
 }
