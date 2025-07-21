@@ -1,17 +1,19 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 int solution(int n)
 {
-    int answer = 0;
-    while(n > 0) {
-        if(n % 2 == 0) {
-            n /= 2;
-        } else {
+    int ans = 0;
+    
+    while(n > 0)
+    {
+        if(n%2 == 0) n /= 2;
+        else
+        {
             n--;
-            answer++;
+            ans++;
         }
     }
-    
-    return answer;
+
+    return ans;
 }
