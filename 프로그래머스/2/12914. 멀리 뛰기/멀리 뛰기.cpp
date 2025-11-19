@@ -1,15 +1,19 @@
-#include <string>
-#include <vector>
-
+#include <bits/stdc++.h>
 using namespace std;
+using LL = long long;
 
-
-long long solution(int n) {
-    long long DP[2002] = {0,};
-    DP[1] = 1;
-    DP[2] = 2;
-    for(int i=3; i<=n; i++)
-        DP[i] = (DP[i-1] + DP[i-2]) % 1234567;
+LL solution(int n) 
+{
+    if (n <= 3) return n;
+    LL ans;
+    int n1 = 2, n2 = 3;
     
-    return DP[n];
+    for(int i=4; i<=n; i++)
+    {
+        ans = (n1 + n2) % 1234567;
+        n1 = n2;
+        n2 = ans;
+    }
+    
+    return ans;
 }
