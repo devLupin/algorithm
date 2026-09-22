@@ -1,52 +1,45 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-#include <string>
-#include <vector>
-#include <stack>
+bool check(deque<char> dq)
+{
+	stack<char> st;
+	for (char c : dq)
+	{
+		if (c == '(' || c == '[' || c == '{')
+			st.push(c);
+		else
+		{
+			if (st.empty())
+				return false;
+			else if (c == ')' && st.top() == '(')
+				st.pop();
+			else if (c == ']' && st.top() == '[')
+				st.pop();
+			else if (c == '}' && st.top() == '{')
+				st.pop();
+			else
+				return false;
+		}
+	}
+	return st.empty();
+}
 
-using namespace std;
+int solution(string s)
+{
+	int cnt = 0, answer = 0;
+	deque<char> dq;
+	for (const char& c : s)
+		dq.push_back(c);
 
-int solution(string s) {
-    int ans = 0;
-    int x = s.size();
-    while(x--) {
-        stack<char> st;
-        bool chk = false;
-        
-        for(int i=0; i<s.size(); i++) {
-            char c = s[i];
-            
-            if(c == '{' || c == '[' || c =='(') st.push(c);
-            else {
-                if(st.empty()) {
-                    chk = false;
-                    break;
-                }
-                
-                if(c == '}' && st.top() == '{') {
-                    st.pop();
-                    chk = true;
-                }
-                else if(c == ']' && st.top() == '[') {
-                    st.pop();
-                    chk = true;
-                }
-                else if(c == ')' && st.top() == '(') {
-                    st.pop();
-                    chk = true;
-                }
-                else {
-                    chk = false;
-                    break;
-                }
-            }
-        }
-        if(st.empty()) ans += chk;
-        
-        char tmp = s[0];
-        s.erase(s.begin());
-        s += tmp;
-    }
-    return ans;
+	while (cnt++ < s.size())
+	{
+		if (check(dq))
+			answer++;
+
+		dq.push_back(dq.front());
+		dq.pop_front();
+	}
+
+	return answer;
 }
